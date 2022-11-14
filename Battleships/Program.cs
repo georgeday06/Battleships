@@ -18,7 +18,7 @@
         Console.WriteLine();
     }
 
-    private static void MakePlayerMove(ref char[,] Board, ref ShipType[] Ships) //Updates the board and 
+    private static void MakePlayerMove(ref char[,] Board, ref ShipType[] Ships) //Updates the board and using the entered coords.
     {
         int Row = 0;
         int Column = 0;
@@ -39,7 +39,7 @@
         }
     }
 
-    private static void SetUpBoard(ref char[,] Board)
+    private static void SetUpBoard(ref char[,] Board) // creates the board
     {
         for (int Row = 0; Row < 10; Row++)
         {
@@ -50,7 +50,7 @@
         }
     }
 
-    private static void LoadGame(string TrainingGame, ref char[,] Board)
+    private static void LoadGame(string TrainingGame, ref char[,] Board) // Loads a game from a .txt file
     {
         string Line = "";
         StreamReader BoardFile = new StreamReader(TrainingGame);
@@ -65,7 +65,7 @@
         BoardFile.Close();
     }
 
-    private static void PlaceRandomShips(ref char[,] Board, ShipType[] Ships)
+    private static void PlaceRandomShips(ref char[,] Board, ShipType[] Ships) // Randomly generates the ships
     {
         Random RandomNumber = new Random();
         bool Valid;
@@ -96,7 +96,7 @@
         }
     }
 
-    private static void PlaceShip(ref char[,] Board, ShipType Ship, int Row, int Column, char Orientation)
+    private static void PlaceShip(ref char[,] Board, ShipType Ship, int Row, int Column, char Orientation) // Allows the user to place the ships
     {
         if (Orientation == 'v')
         {
@@ -114,7 +114,7 @@
         }
     }
 
-    private static bool ValidateBoatPosition(char[,] Board, ShipType Ship, int Row, int Column, char Orientation)
+    private static bool ValidateBoatPosition(char[,] Board, ShipType Ship, int Row, int Column, char Orientation) // Checks Orientation
     {
         if (Orientation == 'v' && Row + Ship.Size > 10)
         {
@@ -150,7 +150,7 @@
         return true;
     }
 
-    private static bool CheckWin(char[,] Board)
+    private static bool CheckWin(char[,] Board) // Checks to see if the player has won
     {
         for (int Row = 0; Row < 10; Row++)
         {
@@ -165,7 +165,7 @@
         return true;
     }
 
-    private static void PrintBoard(char[,] Board)
+    private static void PrintBoard(char[,] Board) // Displays the board
     {
         Console.WriteLine();
         Console.WriteLine("The board looks like this: ");
@@ -202,7 +202,7 @@
         }
     }
 
-    private static void DisplayMenu()
+    private static void DisplayMenu() // Start menu
     {
         Console.WriteLine("MAIN MENU");
         Console.WriteLine("");
@@ -212,7 +212,7 @@
         Console.WriteLine();
     }
 
-    private static int GetMainMenuChoice()
+    private static int GetMainMenuChoice() // Records their choice
     {
         int Choice = 0;
         Console.Write("Please enter your choice: ");
@@ -221,7 +221,7 @@
         return Choice;
     }
 
-    private static void PlayGame(ref char[,] Board, ref ShipType[] Ships)
+    private static void PlayGame(ref char[,] Board, ref ShipType[] Ships) //Main game code
     {
         bool GameWon = false;
         while (GameWon == false)
@@ -237,7 +237,7 @@
         }
     }
 
-    private static void SetUpShips(ref ShipType[] Ships)
+    private static void SetUpShips(ref ShipType[] Ships) // Sets up the ships in a random place
     {
         Ships[0].Name = "Aircraft Carrier";
         Ships[0].Size = 5;
@@ -251,7 +251,7 @@
         Ships[4].Size = 2;
     }
 
-    static void Main(string[] args)
+    static void Main(string[] args) // Main code to run 
     {
         ShipType[] Ships = new ShipType[5];
         char[,] Board = new char[10, 10];
